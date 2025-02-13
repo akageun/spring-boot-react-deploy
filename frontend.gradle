@@ -1,0 +1,39 @@
+apply plugin: "com.github.node-gradle.node"
+
+def projectDir = file("${project.rootDir}/src/main/webapp")
+
+node {
+    version = '20.15.1'
+    yarnVersion = '1.22.22'
+    download = true
+
+    nodeProjectDir.set(projectDir)
+}
+
+tasks.register('yarnInstall2', YarnTask) {
+    args = ['install']
+}
+
+tasks.register('yarnBuild', YarnTask) {
+    dependsOn yarnInstall2
+    args = ['run', 'build']
+}
+
+tasks.register('copyDist', Copy) {
+    dependsOn yarnBuild
+
+    delete "${project.rootDir}/src/main/resources/static"
+
+    from("${projectDir}/build") {
+        include '**/*'
+    }
+    into "${project.rootDir}/src/main/resources/static"
+    includeEmptyDirs = true
+}
+
+tasks.register('deleteDist', Delete) {
+    dependsOn copyDist
+    delete "${projectDir}/build"
+}
+
+processResources { dependsOn "deleteDist" }

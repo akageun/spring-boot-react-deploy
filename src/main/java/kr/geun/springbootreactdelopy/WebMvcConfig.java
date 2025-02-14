@@ -41,7 +41,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
             .or(path("/error"))
             .or(pathExtension(extensions::contains))
             .negate();
-        return route().resource(spaPredicate, index).build();
+        return route()
+            .resource(spaPredicate, index)
+            .build();
     }
 
 //    @Override

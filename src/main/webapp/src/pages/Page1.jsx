@@ -1,8 +1,8 @@
 import {ServerMap} from "@pinpoint-fe/server-map";
-import {useRef, useState} from "react";
+import {useState} from "react";
 
-const Page1 = ({}) => {
-    const [data, setData] = useState({
+const Page1 = () => {
+    const [data] = useState({
         nodes: [{id: '1', label: 'test'}, {id: '2', label: 'test2'}],
         edges: [{id: 'e1', source: '1', target: '2'}]
     });

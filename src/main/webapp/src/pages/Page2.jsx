@@ -1,4 +1,4 @@
-const Page2 = ({}) => {
+const Page2 = () => {
     return (
         <div className="App">
             Page 2

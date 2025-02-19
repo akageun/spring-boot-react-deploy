@@ -1,5 +1,3 @@
-import {useState} from "react";
-
 const Page1 = () => {
   return (
     <div className="App">

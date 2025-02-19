@@ -33,7 +33,7 @@ jobs:
 
       - name: Build with Gradle Wrapper
         run: ./gradlew build
-      - run: mkdir staging && mv build/libs/sample.jar build/libs/sample-${{ env.build-number }}.jar && cp build/libs/*.jar staging
+      - run: mkdir staging && cp build/libs/sample.jar staging
       - uses: actions/upload-artifact@v4
         with:
           name: Package

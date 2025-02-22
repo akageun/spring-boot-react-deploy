@@ -17,11 +17,17 @@ import java.util.Map;
 @RequestMapping("/api")
 public class SampleApi {
 
-    @GetMapping("/test")
-    public ResponseEntity<Map<String, String>> test() {
 
-        Map<String, String> result = Map.of("message", "Hello World!");
+  public SampleApi() {
+  }
 
-        return ResponseEntity.ok(result);
-    }
+  @GetMapping("/test")
+  public ResponseEntity<Map<String, String>> test() {
+
+    Map<String, String> result = Map.of("message", "Hello World!");
+
+    return ResponseEntity.ok(result);
+  }
+
+
 }
